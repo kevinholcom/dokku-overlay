@@ -1,0 +1,4 @@
+[plugin]
+description = "A dokku plugin to specify a directory tree to overlay into the app directory tree."
+version = "0.1.0"
+[plugin.config]
