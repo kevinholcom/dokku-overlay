@@ -4,8 +4,6 @@ source "$PLUGIN_CORE_AVAILABLE_PATH/common/functions"
 
 APP="$1"; TMP_WORK_DIR="$2"; REV="$3"
 
-dokku_log_info2 "Looking for .dokku-overlay"
-
 [[ ! -f "$TMP_WORK_DIR/.dokku-overlay" ]] && exit
 
 dokku_log_info2 "Overlay plugin detected"
@@ -16,6 +14,8 @@ while IFS="=" read -u 10 -a line || [[ -n $line ]]; do
 
   src_dir="${line[1]}"
   dokku_log_info2 "Copying directory ./$src_dir into app"
+
+  dokku_log_info2 "cp -rf $TMP_WORK_DIR/$src_dir/ $TMP_WORK_DIR"
 
   cp -rf "$TMP_WORK_DIR/$src_dir/" "$TMP_WORK_DIR"
   exit
